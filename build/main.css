@@ -21294,8 +21294,18 @@ page-review .note {
   max-width: 40%;
 }
 
+page-review .settings-list {
+  margin-bottom: 0;
+}
+
+page-review .settings-list ion-item {
+  font-size: .9em;
+}
+
 page-review .answer-item {
+  margin-top: 0;
   font-size: 1.4em;
+  line-height: 1;
 }
 
 page-review .answer-item input::-webkit-input-placeholder {
