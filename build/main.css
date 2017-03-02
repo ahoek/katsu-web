@@ -24447,3 +24447,7 @@ page-summary .summary {
   overflow-y: scroll;
   display: block;
 }
+
+page-summary ruby rt {
+  font-size: 0.7em;
+}
