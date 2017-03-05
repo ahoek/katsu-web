@@ -15,6 +15,21 @@ module.exports = [
         "runs": true
     },
     {
+        "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+        "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+        "pluginId": "cordova-plugin-google-analytics",
+        "clobbers": [
+            "analytics",
+            "ga"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-google-analytics/browser/UniversalAnalyticsProxy.js",
+        "id": "cordova-plugin-google-analytics.UniversalAnalyticsProxy",
+        "pluginId": "cordova-plugin-google-analytics",
+        "runs": true
+    },
+    {
         "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
         "id": "cordova-plugin-splashscreen.SplashScreen",
         "pluginId": "cordova-plugin-splashscreen",
@@ -50,21 +65,6 @@ module.exports = [
             "cordova.plugins.Keyboard"
         ],
         "runs": true
-    },
-    {
-        "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
-        "id": "cordova-plugin-google-analytics.UniversalAnalytics",
-        "pluginId": "cordova-plugin-google-analytics",
-        "clobbers": [
-            "analytics",
-            "ga"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-google-analytics/browser/UniversalAnalyticsProxy.js",
-        "id": "cordova-plugin-google-analytics.UniversalAnalyticsProxy",
-        "pluginId": "cordova-plugin-google-analytics",
-        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -72,11 +72,11 @@ module.exports.metadata =
 {
     "cordova-plugin-console": "1.0.5",
     "cordova-plugin-device": "1.1.4",
+    "cordova-plugin-google-analytics": "1.7.5",
     "cordova-plugin-splashscreen": "4.0.1",
     "cordova-plugin-statusbar": "2.2.1",
     "cordova-plugin-whitelist": "1.3.1",
-    "ionic-plugin-keyboard": "2.2.1",
-    "cordova-plugin-google-analytics": "1.7.5"
+    "ionic-plugin-keyboard": "2.2.1"
 }
 // BOTTOM OF METADATA
 });
