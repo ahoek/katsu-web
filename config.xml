@@ -28,6 +28,7 @@
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
     <preference name="SplashScreen" value="/assets/icon/largetile.png" />
     <preference name="SplashScreenDelay" value="500" />
+    <preference name="HideKeyboardFormAccessoryBar" value="true" />
     <preference name="SplashScreenBackgroundColor" value="#ffffff" />
     <preference name="ShowSplashScreen" value="false" />
     <preference name="SplashScreenWidth" value="310" />
