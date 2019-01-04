@@ -20,6 +20,7 @@ cordova.define("cordova-plugin-google-analytics.UniversalAnalyticsProxy", functi
     'setOptOut',
     'setUserId',
     'getVar',
+    'setVar',
     'startTrackerWithId',
     'trackEvent',
     'trackException',
@@ -63,8 +64,14 @@ UniversalAnalyticsProxy.prototype = {
     // Not supported by browser platofrm
   }),
 
-  getVar: wrap(function(param){
-    this._ga('get', param);
+  getVar: function (success, error, param) {
+    this._ga(function(tracker){
+      success(tracker.get(param));
+    });
+  },
+
+  setVar: wrap(function(param, value){
+    this._ga('set', param, value);
   }),
 
   debugMode: wrap(function () {
@@ -173,7 +180,7 @@ UniversalAnalyticsProxy.prototype = {
 function send(fn) {
   return function (success, error, args) {
     var command = fn.apply(this, args);
-    var timeout = setTimeout(function () {
+    var timeout = setTimeout(function () {
       error(new Error('send timeout'));
     }, 3000);
 
@@ -209,7 +216,7 @@ function bindAll(that, names) {
 function loadGoogleAnalytics(name) {
   window.GoogleAnalyticsObject = name;
 
-  window[name] = window[name] || function () {
+  window[name] = window[name] || function () {
     (window[name].q = window[name].q || []).push(arguments);
   };
   window[name].l = 1 * new Date();

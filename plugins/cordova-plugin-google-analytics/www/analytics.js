@@ -34,7 +34,15 @@ UniversalAnalyticsPlugin.prototype.setAppVersion = function(version, success, er
 };
 
 UniversalAnalyticsPlugin.prototype.getVar = function(variable, success, error) {
-  cordova.exec(success, error, 'UniversalAnalytics', 'get', [variable]);
+  cordova.exec(success, error, 'UniversalAnalytics', 'getVar', [variable]);
+};
+
+UniversalAnalyticsPlugin.prototype.setVar = function(variable, value, success, error) {
+  cordova.exec(success, error, 'UniversalAnalytics', 'setVar', [variable, value]);
+};
+
+UniversalAnalyticsPlugin.prototype.dispatch = function(success, error) {
+  cordova.exec(success, error, 'UniversalAnalytics', 'dispatch', []);
 };
 
 /* enables verbose logging */
@@ -43,7 +51,24 @@ UniversalAnalyticsPlugin.prototype.debugMode = function(success, error) {
 };
 
 UniversalAnalyticsPlugin.prototype.trackMetric = function(key, value, success, error) {
-  cordova.exec(success, error, 'UniversalAnalytics', 'trackMetric', [key, value]);
+  // as key was formerly documented to be of type string, 
+  // we need to at least accept string formatted numbers and pass the converted number
+  var numberKey = key;
+  if (typeof key === "string") {
+    numberKey = Number.parseInt(key);
+    if (isNaN(numberKey)) {
+      throw Error("key must be a valid integer or string formatted integer");
+    }
+  }
+
+  // as value was formerly documented to be of type string
+  // and therefore platform implementations expect value parameter of type string,
+  // we need to cast the value parameter to string - although gathered metrics are infact number types.
+  var stringValue = value || "";
+  if (typeof stringValue !== "string") {
+    stringValue = String(value);
+  }
+  cordova.exec(success, error, 'UniversalAnalytics', 'trackMetric', [numberKey, stringValue]);
 };
 
 UniversalAnalyticsPlugin.prototype.trackView = function(screen, campaignUrl, newSession, success, error) {
