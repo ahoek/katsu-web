@@ -1,0 +1,23 @@
+{
+  "name": "katsu",
+  "short_name": "katsu",
+  "theme_color": "#000",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "assets/icon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon/largetile.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "default_locale": "en",
+  "orientation": "portrait"
+}
